@@ -94,6 +94,19 @@ jobs:
           rm -rf extract-xiso
 
       - name: Download Data
+      - name: Check downloaded file
+  run: |
+    echo "=== LISTANDO ARQUIVOS ==="
+    ls -lh
+
+    echo "=== TIPOS DOS ARQUIVOS ==="
+    file *
+
+    echo "=== PROCURANDO XEX ==="
+    find . -name "*.xex"
+
+    echo "=== PROCURANDO SHADER ==="
+    find . -name "shader.ar"
         if: ${{ github.event_name == 'workflow_dispatch' || env.ASSET_REPO != '' }}
         env:
           GAME_URL: ${{ github.event.inputs.game_url }}
